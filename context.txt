@@ -54,58 +54,88 @@ Output validé :
 5 Zombies qui announce "Zombar: BraiiiiiiinnnzzzZ..."
 5 destructions dans l'ordre inverse (LIFO)
 
-⭕ Exercice 02 : HI THIS IS BRAIN (Pointer vs Reference)
+✅ Exercice 02 : HI THIS IS BRAIN
 
-Status : 🔄 EN COURS
+Status : ✅ TERMINÉ
 
-Objectif :
-String "HI THIS IS BRAIN"
-stringPTR : pointeur vers la string
-stringREF : référence vers la string
-Afficher les 3 adresses et les 3 valeurs
+Progression :
+✅ String "HI THIS IS BRAIN"
+✅ stringPTR : pointeur vers la string
+✅ stringREF : référence vers la string
+✅ Affichage des 3 adresses (&str, &ptr, &ref)
+✅ Affichage des 3 valeurs (str, *ptr, ref)
+✅ Makefile compilant
 
 Concepts clés acquis :
-✅ Référence = alias de la variable
+✅ Référence = alias, même adresse que l'original
+✅ Pointeur = adresse du pointeur différente de l'original
 ✅ Une référence ne peut pas être NULL
 ✅ Modifier ref = modifier la variable originale
 ✅ Pointeur vs référence : syntaxe et comportement
 
-À faire :
-Créer ex02/main.cpp
-Afficher adresses et valeurs
+Output validé :
+original str: HI THIS IS BRAIN
+pointer to str: HI THIS IS BRAIN
+reference to str: HI THIS IS BRAIN
+str adress: 0x...
+pointer adress: 0x... (DIFFÉRENTE)
+reference adress: 0x... (IDENTIQUE à str)
 
 ⭕ Exercice 03 : Unnecessary violence (HumanA/HumanB)
 
-Status : À COMMENCER
+Status : ✅ TERMINÉ
 
-Objectif :
-Classe Weapon avec type, getType(), setType()
-HumanA : prend Weapon dans constructeur (référence)
-HumanB : peut exister sans arme (pointeur)
-Méthode attack() pour les deux
+Progression :
+✅ Classe Weapon avec attribut _type privé
+✅ getType() retourne const std::string& (référence const, pas copie)
+✅ setType() change le type
+✅ Destructeur avec message debug
+✅ HumanA avec référence à Weapon (toujours armé)
+✅ HumanA::constructor initialise _weapon dans initializer list
+✅ HumanB avec pointeur à Weapon (peut ne pas avoir d'arme)
+✅ HumanB::setWeapon() assigne l'arme après construction
+✅ attack() pour les deux (. pour ref, -> pour ptr)
+✅ Makefile compilant
 
-Concepts clés :
-Composition d'objets
-Référence vs pointeur dans attributs
-Quand utiliser référence (toujours valide) vs pointeur (peut être NULL)
-Const reference dans getType()
+Concepts clés maîtrisés :
+✅ Référence = alias, ne peut pas être NULL, initialisée au constructor
+✅ Pointeur = adresse, peut être NULL, assignable après
+✅ const std::string& = évite les copies inutiles
+✅ Composition d'objets (Weapon dans Human)
+✅ Quand utiliser référence (obligation) vs pointeur (option)
+
+Output validé :
+Bob attacks with their crude spiked club
+Bob attacks with their some other type of club
+Jim attacks with their crude spiked club
+Jim attacks with their some other type of club
+(puis destructions)
 
 ⭕ Exercice 04 : Sed is for losers (Remplacement fichier)
 
-Status : À COMMENCER
+Status : ✅ TERMINÉ
 
-Objectif :
-Programme prenant filename, s1, s2 en paramètres
-Lire fichier, remplacer s1 par s2, écrire dans filename.replace
-Utiliser std::ifstream/ofstream (pas C-style)
-Interdiction d'utiliser std::string::replace
-Gestion d'erreurs complète
+Progression :
+✅ Vérification des paramètres (argc = 4)
+✅ Ouverture fichier en lecture avec std::ifstream
+✅ Lecture complète dans un std::string avec getline
+✅ Boucle find/replace explicite (sans std::string::replace)
+✅ Utilisation de substr() pour extraire avant/après
+✅ Création fichier filename.replace avec std::ofstream
+✅ Gestion d'erreurs complète (fichiers non ouverts)
+✅ Makefile compilant
 
-Concepts clés :
-Streams C++ (ifstream/ofstream)
-Manipulation std::string (find, substr)
-Gestion fichiers en C++
-Gestion d'erreurs
+Concepts clés maîtrisés :
+✅ Streams C++ (ifstream/ofstream)
+✅ std::string::find() et substr()
+✅ npos = constante pour "pas trouvé"
+✅ Boucle pour remplacer TOUTES les occurrences
+✅ Gestion d'erreurs (is_open())
+✅ Manipulation de strings efficace
+
+Output validé :
+Crée filename.replace avec s1 remplacé par s2
+Gère les cas où fichier n'existe pas
 
 ⭕ Exercice 05 : Harl 2.0 (Pointeurs vers méthodes)
 
