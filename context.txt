@@ -4,15 +4,10 @@ Instructions pour l'Assistant
 Tu es un professeur de C++ qui guide l'étudiant dans son apprentissage. Tu ne dois JAMAIS donner la solution complète directement. Ton rôle est de :
 
 Poser des questions pour faire réfléchir l'étudiant
-
 Donner des indices progressifs quand l'étudiant est bloqué
-
 Expliquer les concepts C++ nécessaires sans résoudre l'exercice
-
 Corriger les erreurs en expliquant pourquoi c'est une erreur
-
 Valider les bonnes approches de l'étudiant
-
 Encourager l'étudiant à chercher et comprendre par lui-même
 
 Objectif : Que l'étudiant comprenne et sache faire l'exercice par lui-même, pas simplement copier une solution.
@@ -20,180 +15,190 @@ Objectif : Que l'étudiant comprenne et sache faire l'exercice par lui-même, pa
 Préférences de l'étudiant
 
 ⚡ Préfère les réponses directes pour vérifier un concept
-
 🎯 Veut comprendre les concepts mais aller vite sur les parties répétitives
-
 📚 Apprécie les explications claires avec exemples concrets
-
 💭 Trouve certaines parties "chiantes" (comme affichage formaté ou boilerplate) → aller à l'essentiel
 
 OÙ EN SOMMES-NOUS ?
-✅ Exercice 00 : Zombie
 
-Status : TERMINÉ
+⭕ Exercice 00 : BraiiiiiiinnnzzzZ (Zombie)
 
-Progression détaillée :
+Status : ✅ TERMINÉ
 
-✅ Classe Zombie : Complète (attribut _name privé, constructeur/destructeur, méthode announce())
+Progression :
+✅ Classe Zombie complète (attribut _name, constructeur, destructeur, announce())
+✅ newZombie() : crée sur heap, retourne pointeur
+✅ randomChump() : crée sur stack, fait announce()
+✅ Main avec tests
+✅ Makefile compilant avec flags requis
+✅ Comprendre la différence stack vs heap
 
-✅ Fonction newZombie(name) : crée un Zombie sur le heap, retourne un pointeur
+Output validé :
+Zombie sur heap announce() → destruction après delete
+Zombie sur stack announce() → destruction à la fin de randomChump()
 
-✅ Fonction randomChump(name) : crée un Zombie sur la stack, appelle announce() directement
+✅ Exercice 01 : Moar brainz! (Zombie Horde)
 
-✅ Main : crée un Zombie sur le heap et un sur la stack, appelle announce()
+Status : ✅ TERMINÉ
 
-✅ Supprimer le Zombie heap avec delete
+Progression :
+✅ Zombie.hpp avec constructeur par défaut + setName()
+✅ Zombie.cpp implémentation complète
+✅ zombieHorde(N, name) alloue N zombies avec new[]
+✅ Boucle d'initialisation avec setName()
+✅ Main teste les announce() pour chaque zombie
+✅ delete[] correctement utilisé
+✅ Makefile compilant
 
-Concepts appris :
+Output validé :
+5 Zombies qui announce "Zombar: BraiiiiiiinnnzzzZ..."
+5 destructions dans l'ordre inverse (LIFO)
 
-Différence stack vs heap
+⭕ Exercice 02 : HI THIS IS BRAIN (Pointer vs Reference)
 
-Utilisation de new et delete
-
-Constructeur et destructeur
-
-Appel de méthodes sur objets et pointeurs
-
-Comparatif C ↔ C++ (malloc/free vs new/delete)
-
-✅ Exercice 01 : Zombie Horde
-
-Status : PRÊT POUR PSEUDO-CODE
+Status : 🔄 EN COURS
 
 Objectif :
+String "HI THIS IS BRAIN"
+stringPTR : pointeur vers la string
+stringREF : référence vers la string
+Afficher les 3 adresses et les 3 valeurs
 
-Créer plusieurs Zombies dynamiquement sur le heap
+Concepts clés acquis :
+✅ Référence = alias de la variable
+✅ Une référence ne peut pas être NULL
+✅ Modifier ref = modifier la variable originale
+✅ Pointeur vs référence : syntaxe et comportement
 
-Retourner un tableau de Zombies
+À faire :
+Créer ex02/main.cpp
+Afficher adresses et valeurs
 
-Tester les appels à announce() pour chacun
-
-Concepts :
-
-Allocation dynamique d’un tableau d’objets (new[])
-
-Libération mémoire avec delete[]
-
-Boucle pour initialiser plusieurs objets
-
-Comparatif C ↔ C++ (malloc(sizeof(T)*n) vs new T[n])
-
-✅ Exercice 02 : Pointer & Reference
+⭕ Exercice 03 : Unnecessary violence (HumanA/HumanB)
 
 Status : À COMMENCER
 
 Objectif :
+Classe Weapon avec type, getType(), setType()
+HumanA : prend Weapon dans constructeur (référence)
+HumanB : peut exister sans arme (pointeur)
+Méthode attack() pour les deux
 
-Comprendre la différence entre pointeurs et références
+Concepts clés :
+Composition d'objets
+Référence vs pointeur dans attributs
+Quand utiliser référence (toujours valide) vs pointeur (peut être NULL)
+Const reference dans getType()
 
-Passer un objet à une fonction par référence ou par pointeur
-
-Observer le comportement en mémoire
-
-Concepts :
-
-Référence = pointeur garanti valide, pas besoin de * pour accéder
-
-Pointeur = peut être NULL, nécessite * pour accéder
-
-Passage par valeur vs référence vs pointeur
-
-Comparatif C ↔ C++
-
-✅ Exercice 03 : HumanA / HumanB
+⭕ Exercice 04 : Sed is for losers (Remplacement fichier)
 
 Status : À COMMENCER
 
 Objectif :
+Programme prenant filename, s1, s2 en paramètres
+Lire fichier, remplacer s1 par s2, écrire dans filename.replace
+Utiliser std::ifstream/ofstream (pas C-style)
+Interdiction d'utiliser std::string::replace
+Gestion d'erreurs complète
 
-Composer des objets (classe contenant un autre objet)
+Concepts clés :
+Streams C++ (ifstream/ofstream)
+Manipulation std::string (find, substr)
+Gestion fichiers en C++
+Gestion d'erreurs
 
-HumanA utilise référence → doit toujours avoir une arme
-
-HumanB utilise pointeur → peut exister sans arme
-
-Appeler attack() ou équivalent sur l’objet contenu
-
-Concepts :
-
-Composition d’objets
-
-Différence entre référence et pointeur dans les attributs
-
-Constructeur pour initialiser les objets composés
-
-✅ Exercice 04 : Sed-is-for-losers
+⭕ Exercice 05 : Harl 2.0 (Pointeurs vers méthodes)
 
 Status : À COMMENCER
 
 Objectif :
+Classe Harl avec debug(), info(), warning(), error()
+Méthode complain(string level) qui appelle la bonne fonction
+Utiliser pointeurs vers fonctions membres (OBLIGATOIRE)
+Pas de if/else if/else en cascade
 
-Lire un fichier ligne par ligne
+Concepts clés :
+Pointeurs vers méthodes de classe
+Tableau de pointeurs fonction
+Syntaxe (this->*ptr)()
+Éviter les if/else en cascade
 
-Remplacer une chaîne s1 par s2 dans chaque ligne
+⭕ Exercice 06 : Harl filter (Switch statement)
 
-Écrire le résultat dans un nouveau fichier
+Status : À COMMENCER (OPTIONNEL)
 
-Concepts :
+Objectif :
+Programme harlFilter prenant level en paramètre
+Afficher ce level et tous les levels supérieurs
+Utiliser switch statement (OBLIGATOIRE)
+Gérer cas par défaut
 
-std::ifstream / std::ofstream pour fichiers
+Concepts clés :
+Switch statement en C++
+Fall-through dans switch
+Filtrage par niveaux
+Gestion arguments programme
 
-std::string::find, substr, replace
+CRITÈRES D'ÉVALUATION (Barème officiel)
 
-Comparatif C ↔ C (fopen/fread/fprintf vs streams C++)
+Prérequis généraux :
+✅ Compilation avec c++ -Wall -Wextra -Werror
+✅ Norme C++98 (pas de C++11+)
+✅ Makefile avec flags appropriés
+✅ Pas de fonctions C (*alloc, *printf, free)
+✅ Pas de "using namespace" ou "friend"
+✅ Tests suffisants dans main
 
-Gestion d’erreurs ouverture/lecture/écriture
+Exercice 00 - Points clés évaluation :
+✅ Classe Zombie avec attribut name privé
+✅ Constructeur + destructeur avec message debug
+✅ Méthode announce() format exact
+✅ newZombie() alloue sur heap, retourne pointeur
+✅ randomChump() crée sur stack, fait announce
+✅ Zombie heap correctement supprimé
+✅ Tests prouvant le fonctionnement
+
+Exercice 01 - Points clés évaluation :
+✅ Constructeur par défaut pour Zombie
+✅ zombieHorde() alloue avec new[]
+✅ Initialisation après allocation
+✅ Tests avec announce() sur tous zombies
+✅ Suppression correcte avec delete[]
+
+Exercice 02 - Points clés évaluation :
+✅ String "HI THIS IS BRAIN"
+✅ stringPTR et stringREF correctement définis
+✅ Affichage adresses et valeurs
+✅ Démonstration équivalence adresses
+
+Exercice 03 - Points clés évaluation :
+✅ Classe Weapon avec getType() retournant const ref
+✅ HumanA avec référence (idéalement)
+✅ HumanB avec pointeur (obligatoire)
+✅ Tests fournis fonctionnent parfaitement
+✅ Justification choix référence vs pointeur
+
+Exercice 04 - Points clés évaluation :
+✅ Utilisation ifstream/ofstream obligatoire
+✅ Pas de std::string::replace
+✅ Gestion erreurs complète
+✅ Tests fournis par étudiant
+✅ Fonctions std::string autorisées sauf replace
+
+Exercice 05 - Points clés évaluation :
+✅ Pointeurs vers méthodes membres OBLIGATOIRE
+✅ Pas de if/else if/else en cascade
+✅ Mapping string → pointeur fonction
+✅ Tests montrant Harl qui se plaint
+
+Exercice 06 - Points clés évaluation :
+✅ Switch statement OBLIGATOIRE
+✅ Fall-through pour afficher level et supérieurs
+✅ Cas par défaut géré
+✅ Exécutable nommé harlFilter
+✅ OPTIONNEL (peut réussir module sans)
 
 SUJET COMPLET DU MODULE
-Chapter I - Exercise 00 : Zombie
-
-Turn-in directory : ex00/
-
-Files to turn in : *.hpp, *.cpp, main.cpp
-
-Forbidden functions : malloc/free, printf (C-style), C++11+ features
-
-But : créer un Zombie sur stack et heap, observer différence, utiliser constructeur/destructeur et méthode announce().
-
-Chapter II - Exercise 01 : Zombie Horde
-
-Turn-in directory : ex01/
-
-Files to turn in : *.hpp, *.cpp
-
-Forbidden functions : malloc/free, C++11+
-
-But : créer un tableau dynamique de Zombies sur le heap et appeler announce() pour chacun.
-
-Chapter III - Exercise 02 : Pointer & Reference
-
-Turn-in directory : ex02/
-
-Files to turn in : *.hpp, *.cpp
-
-Forbidden functions : C-style memory management, C++11+
-
-But : comprendre et expérimenter la différence entre pointeur et référence.
-
-Chapter IV - Exercise 03 : HumanA / HumanB
-
-Turn-in directory : ex03/
-
-Files to turn in : *.hpp, *.cpp, main.cpp
-
-Forbidden functions : C-style memory management, C++11+
-
-But : apprendre la composition d’objets et l’utilisation de référence vs pointeur dans les attributs.
-
-Chapter V - Exercise 04 : Sed-is-for-losers
-
-Turn-in directory : ex04/
-
-Files to turn in : *.hpp, *.cpp, main.cpp
-
-Forbidden functions : C-style I/O, C++11+
-
-But : manipuler fichiers en C++, remplacer une chaîne de caractères, écrire résultat dans un nouveau fichier.
 
 Chapter III
 Exercise 00: BraiiiiiiinnnzzzZ
@@ -243,7 +248,7 @@ And then:
 • The value of the string variable.
 • The value pointed to by stringPTR.
 • The value pointed to by stringREF.
-That’s all—no tricks. The goal of this exercise is to demystify references, which may seem completely new. Although there are some small differences, this is simply another syntax for something you already do: address manipulation.
+That's all—no tricks. The goal of this exercise is to demystify references, which may seem completely new. Although there are some small differences, this is simply another syntax for something you already do: address manipulation.
 
 Chapter VI
 Exercise 03: Unnecessary violence
@@ -278,19 +283,19 @@ Harl 2.0
 Turn-in directory : ex05/
 Files to turn in : Makefile, main.cpp, Harl.{h, hpp}, Harl.cpp
 Forbidden functions : None
-Do you know Harl? We all do, don’t we? In case you don’t, find below the kind of comments Harl makes. They are classified by levels:
+Do you know Harl? We all do, don't we? In case you don't, find below the kind of comments Harl makes. They are classified by levels:
 • "DEBUG" level: Debug messages contain contextual information. They are mostly used for problem diagnosis. Example: "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!"
-• "INFO" level: These messages contain extensive information. They are helpful for tracing program execution in a production environment. Example: "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!"
-• "WARNING" level: Warning messages indicate a potential issue in the system. However, it can be handled or ignored. Example: "I think I deserve to have some extra bacon for free. I’ve been coming for years, whereas you started working here just last month."
+• "INFO" level: These messages contain extensive information. They are helpful for tracing program execution in a production environment. Example: "I cannot believe adding extra bacon costs more money. You didn't put enough bacon in my burger! If you did, I wouldn't be asking for more!"
+• "WARNING" level: Warning messages indicate a potential issue in the system. However, it can be handled or ignored. Example: "I think I deserve to have some extra bacon for free. I've been coming for years, whereas you started working here just last month."
 • "ERROR" level: These messages indicate that an unrecoverable error has occurred. This is usually a critical issue that requires manual intervention. Example: "This is unacceptable! I want to speak to the manager now."
-You are going to automate Harl. It won’t be difficult since he always says the same things. You have to create a Harl class with the following private member functions:
+You are going to automate Harl. It won't be difficult since he always says the same things. You have to create a Harl class with the following private member functions:
 • void debug( void );
 • void info( void );
 • void warning( void );
 • void error( void );
 Harl also has a public member function that calls the four member functions above depending on the level passed as a parameter:
 void complain( std::string level );
-The goal of this exercise is to use pointers to member functions. This is not a suggestion. Harl has to complain without using a forest of if/else if/else. He doesn’t think twice! Create and turn in tests to show that Harl complains a lot. You can use the examples of comments listed above in the subject or choose to use comments of your own.
+The goal of this exercise is to use pointers to member functions. This is not a suggestion. Harl has to complain without using a forest of if/else if/else. He doesn't think twice! Create and turn in tests to show that Harl complains a lot. You can use the examples of comments listed above in the subject or choose to use comments of your own.
 
 Chapter IX
 Exercise 06: Harl filter
@@ -299,7 +304,7 @@ Harl filter
 Turn-in directory : ex06/
 Files to turn in : Makefile, main.cpp, Harl.{h, hpp}, Harl.cpp
 Forbidden functions : None
-Sometimes you don’t want to pay attention to everything Harl says. Implement a system to filter what Harl says depending on the log levels you want to listen to. Create a program that takes as a parameter one of the four levels. It will display all messages from this level and above. For example:
+Sometimes you don't want to pay attention to everything Harl says. Implement a system to filter what Harl says depending on the log levels you want to listen to. Create a program that takes as a parameter one of the four levels. It will display all messages from this level and above. For example:
 $> ./harlFilter "WARNING"
 [ WARNING ]
 I think I deserve to have some extra bacon for free.
@@ -309,3 +314,8 @@ This is unacceptable! I want to speak to the manager now.
 $> ./harlFilter "I am not sure how tired I am today..."
 [ Probably complaining about insignificant problems ]
 Although there are several ways to deal with Harl, one of the most effective is to SWITCH it off. Give the name harlFilter to your executable. You must use, and maybe discover, the switch statement in this exercise.
+
+Note pédagogique :
+Chaque exercice est conçu pour apprendre progressivement les concepts de C++ moderne (mais compatible C++98).
+L'objectif principal : comprendre la logique et les objets, pas juste copier du code.
+Comparatifs fréquents C ↔ C++ pour consolider les acquis.
